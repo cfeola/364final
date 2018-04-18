@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ recipe_book.name }}
+<form method="POST" action= "/update/{{ recipe_book.name }}">
+			{{form.hidden_tag()}}
+			{{ form.submit() }}
+</h1></form>
+
+{% for recipe in recipes %}
+	<h3> {{recipe.name}} </h3>
+      <img src = {{recipe.image}}><br>
+      <br>Labels: <br>
+      {% for label in recipe.labels.split(',') %}
+      	{{label}} <br>
+      {% endfor %}
+      <br>Ingredients:<br> 
+      {% for ingredient in recipe.ingredients.split(',') %}
+      	{{ingredient}} <br>
+      {% endfor %}
+      <br><a href= {{recipe.url }}> Link to Recipe </a><br><br>
+{% endfor %}
+
+<div>
+{% for message in get_flashed_messages() %}
+    <br><strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+
+{% endblock %}
+

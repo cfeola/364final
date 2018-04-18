@@ -1,0 +1,10 @@
+Initial Project Idea - Colleen Feola 
+
+App Name: 
+Recipe Genius 
+
+Description: 
+This application allows users to register and sign in, search for recipes, and save recipes they liked or would like to recall later in a database. Users that are logged in can also create and view personal recipe books containing any combination of recipes that are currently saved in the database. Users can search for recipes by recipe name or by ingredients, and can filter the recipes by dietary restrictions (vegan, vegetarian), nutritional information (high protein, low fat, etc.), or allergy information (peanut free, tree nut free, etc.) 
+
+I am choosing to build this application because I am a health-conscious person and always struggle to find new healthy recipes to try. 
+

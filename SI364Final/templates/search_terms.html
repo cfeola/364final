@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>View previous searches</h1>
+	{% if search_terms|length == 0 %}
+		<p> There are no recent search terms to display. </p>
+	{% endif %}
+
+    {% for term in search_terms %}
+        <h3>Search term: {{ term.search }}</h3>
+        <ul>
+        <li>Dietary Restriction: {{ term.diet }}</li><br>
+        <li>Health Reistriction: {{ term.health }}</li><br>
+        <li>Calories Range: {{ term.calories }}</li><br>
+        <li> Results </li>
+            <ul><br>
+            {% for term in term.recipes.all() %}
+                <li><a href = {{term.url}}> {{term.name}}</a><br><br></li>  
+            {% endfor %}<br>
+        </ul>
+       </ul>
+    {% endfor %}
+
+<div>
+{% for message in get_flashed_messages() %}
+    <br><strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
+

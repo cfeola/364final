@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+        <style>
+            body {
+                font-family: "Raleway";}
+        </style>
+</head>
+<body>
+{% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}">Sign Out {{current_user.username}}</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Sign In</a>
+{% endif %}
+<br>
+<br>
+
+{% block content %}
+<h1>Recipe Genius</h1>
+<h3> <br><center> Welcome to Recipe Genius! This application is designed to help you discover new, healthy recipes. Enjoy!</center><br></h3>
+<form action="{{ url_for('index') }}" method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.search.label }}  {{ form.search() }}<br><br>
+    {{ form.diet.label }} {{ form.diet() }}<br>
+    {{ form.health.label }} {{ form.health() }}<br>
+    {{ form.calories.label }} {{ form.calories() }}<br><br>
+    {{ form.submit() }}<br><br>
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+    <br><strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block nav %}
+<h3><center> Navigation </center></h3>
+    <a href="{{ url_for('index') }}">Search for recipes</a><br>
+    <a href="{{ url_for('all_search_terms') }}">Recent recipe search terms</a><br>
+    <a href="{{ url_for('all_recipes') }}">Recently searched recipes</a><br>
+    <a href="{{ url_for('create_recipe_book') }}">Create a personal recipe book</a><br>
+    <a href="{{ url_for('recipe_books') }}">View personal recipe books</a><br>
+    <a href="{{ url_for('eval') }}">Site Evaluation Form</a><br><br>
+{% endblock %}
+
+</body>
+</html>

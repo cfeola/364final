@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Recently Searched Recipes </h2>
+
+{% if all_recipes|length == 0 %}
+	<p> There are no recipes to display. </p>
+{% else %}
+	{% for recipe in all_recipes %}
+	    <a href= {{recipe.url }}> {{recipe.name}} </a><br><br>
+	{% endfor %}
+{% endif %}
+
+<div>
+{% for message in get_flashed_messages() %}
+    <br><strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

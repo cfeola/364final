@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div>
+	{% for message in get_flashed_messages() %}
+	    <br><strong>{{ message }}</strong>
+	{% endfor %}
+	</div>
+
+	<h2> Thank you! </h2>
+	<center><p> Thank you for using Recipe Genius. <br> We appreciate your feedback and hope you come back soon! </p></center>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h2>Sign up for a new user account</h2>
+<form method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.email.label }} {{ form.email() }}
+	{{ form.username.label }}  {{ form.username() }}<br><br>
+    {{ form.password.label }} {{ form.password() }}    
+    {{ form.password2.label }}  {{ form.password2() }}<br><br>
+	{{ form.submit.label }} {{ form.submit() }}<br>
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+    <br><strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

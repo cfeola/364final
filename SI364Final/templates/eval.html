@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2> Site Evaluation Form </h2>
+	<center><p> We value your feedback. Please leave your name and e-mail if you would like us to follow-up with you regarding your experience using Recipe Genius. Thanks! </p></center><br>
+  <form action="{{url_for('evalResults')}}" method="GET">
+    {{ form.hidden_tag() }}
+    {{ form.evaluation.label }} {{ form.evaluation() }}<br>
+    {{ form.explaination.label }} {{ form.explaination() }}<br><br>
+    {{ form.name.label }} {{ form.name() }}<br><br>
+    {{ form.email.label }} {{ form.email() }}<br><br>
+    {{ form.submit() }}<br>
+  </form>
+
+ <div>
+{% for message in get_flashed_messages() %}
+    <br><strong>{{ message }}</strong>
+{% endfor %}
+</div>
+{% endblock %}

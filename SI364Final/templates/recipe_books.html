@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>My Recipe Books</h1>
+{% if recipe_books|length == 0 %}
+	<p> You have not created any recipe books yet. </p>
+{% endif %}
+<ul>
+{% for recipe in recipe_books %}
+    <li>
+    	<a href="http://localhost:5000/recipe_book/{{ recipe.id }}">{{ recipe.name }}</a>
+     	<form action="/delete/{{ recipe.name }}"" method="POST">
+        	{{form.hidden_tag()}}
+        	{{ form.submit() }}
+        </form><br>
+    </li>
+{% endfor %}
+</ul>
+
+<div>
+{% for message in get_flashed_messages() %}
+    <br><strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+

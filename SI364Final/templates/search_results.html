@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Search Results</h2>
+
+{% if data|length == 0 %}
+	<p> There are no search results to display. </p>
+{% endif %}
+
+{% for recipe in data %}
+     <h3>{{ recipe }}</h3>
+     	<img src = {{data[recipe][2]}} ><br>
+     	<br><strong> Health Labels:</strong> <br>
+     	{% for health in data[recipe][0] %}
+			{{ health }} <br>
+		{% endfor %}
+      	<br><strong> Ingredients: </strong><br>
+		{% for ingredient in data[recipe][1] %}
+			{{ ingredient }} <br>
+		{% endfor %}
+      	<br><a href={{data[recipe][3]}}> Link to recipe </a>
+{% endfor %}
+
+<div>
+{% for message in get_flashed_messages() %}
+    <br><strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

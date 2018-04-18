@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block content %}
+<h2>Create a new personal recipe book</h2>
+
+<form action="" method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.name.label }} {{ form.name() }}<br><br>
+	{{ form.recipe_picks.label }} {{ form.recipe_picks() }}<br><br>
+	{{ form.submit.label }} {{ form.submit() }}
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+    <br><strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
